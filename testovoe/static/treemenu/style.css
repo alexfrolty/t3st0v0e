@@ -1,0 +1,13 @@
+.green-link {
+    color: green !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+    font-weight: bold !important;
+}
+
+.gray-link {
+    color: #1c1f1c !important;
+    text-decoration: underline !important;
+    text-underline: #1c1f1c;
+    font-weight: normal !important;
+}

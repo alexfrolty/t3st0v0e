@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'treemenu/style.css' %}" rel="stylesheet"/>
+</head>
+<body>
+
+{% if secondary %}
+    <a href="{{ secondary.url }}">
+        {{ secondary.name }}
+    </a>
+{% endif %}
+
+{% if root_menus %}
+<ul>
+    {% for root_menu in root_menus %}
+    <li>
+        <a href="{{ root_menu.url }}"
+           {% if active and active.name == root_menu.name %} class="green-link" {% else %} class="gray-link" {% endif %}>
+            {{ root_menu.name }}
+        </a>
+        {% if tree_menu %}
+            <ul>
+                {% for menu in tree_menu %}
+                    {% include "menu_item.html" with menu=menu active=active %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
+</body>
+</html>

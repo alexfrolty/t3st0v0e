@@ -1,0 +1,13 @@
+<li>
+    <a href="{{ menu.url }}"
+       {% if active and active.name == menu.name %} class="green-link" {% else %} class="gray-link" {% endif %}>
+        {{ menu.name }}
+    </a>
+    {% if menu.next %}
+        <ul>
+            {% for sub_menu in menu.next %}
+                {% include "menu_item.html" with menu=sub_menu active=active %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>
