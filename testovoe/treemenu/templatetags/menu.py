@@ -7,7 +7,7 @@ register = template.Library()
 
 @register.inclusion_tag('menu.html', takes_context=True)
 def draw_menu(context, menu_name):
-    menus = Menu.objects.prefetch_related('children').filter(menu_name=menu_name).values('id', 'name', 'parent_id', 'url')
+    menus = Menu.objects.all().filter(menu_name=menu_name).values('id', 'name', 'parent_id', 'url')
 
     # Преобразуем список menus в список
     menus_list = [menu for menu in menus]
